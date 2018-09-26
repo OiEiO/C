@@ -1,10 +1,9 @@
-#include<stdio.h>
-int main()
-{
-	char a[5][20]={"","Î÷°²½»Í¨´óÑ§","Î÷±±¹¤Òµ´óÑ§","Î÷°²µç×Ó¿Æ¼¼´óÑ§","µÚËÄ¾üÒ½´óÑ§"};
-	int b;
-	printf("Plesse enter any integer between 1~5: ");
-	scanf("%d",&b);
-	printf("%s",a[b]);
-	return 0;
+#include <stdio.h>
+int main() {
+    char a[5][20] = {"", "è¥¿å®‰äº¤é€šå¤§å­¦", "è¥¿åŒ—å·¥ä¸šå¤§å­¦", "è¥¿å®‰ç”µå­ç§‘æŠ€å¤§å­¦", "ç¬¬å››å†›åŒ»å¤§å­¦"};
+    int b;
+    printf("Plesse enter any integer between 1~5: ");
+    scanf("%d", &b);
+    printf("%s", a[b]);
+    return 0;
 }

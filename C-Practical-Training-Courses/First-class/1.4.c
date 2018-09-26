@@ -1,16 +1,15 @@
-#include<stdio.h>
-int main()
-{
-	int a[10],i,m=0,n=0;
-	printf("ÇëÊäÈë10¸öÕûÊı£º");
-	for(i=0;i<10;i++)
-		scanf("%d",&a[i]);
-	for(i=0;i<10;i++)
-		if(a[i]%2==0)
-			m=m+a[i];
-		else
-	
-			n=n+1;
-	printf("ÆæÊıÓĞ%d¸ö£¬Å¼ÊıµÄÀÛ¼ÓºÍÎª%d",n,m);
-	return 0;
- } 
+#include <stdio.h>
+int main() {
+    int a[10], i, m = 0, n = 0;
+    printf("è¯·è¾“å…¥10ä¸ªæ•´æ•°ï¼š");
+    for (i = 0; i < 10; i++)
+        scanf("%d", &a[i]);
+    for (i = 0; i < 10; i++)
+        if (a[i] % 2 == 0)
+            m = m + a[i];
+        else
+
+            n = n + 1;
+    printf("å¥‡æ•°æœ‰%dä¸ªï¼Œå¶æ•°çš„ç´¯åŠ å’Œä¸º%d", n, m);
+    return 0;
+}
