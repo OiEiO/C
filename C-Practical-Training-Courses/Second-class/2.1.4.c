@@ -3,7 +3,7 @@ float num();
 float i = 1, sum = 0;
 int main() {
 
-    sum = num(sum);
+    sum = num();
     printf("sum = %f", sum);
     return 0;
 }
