@@ -8,11 +8,11 @@ int main() {
             printf("%3d", a[x][y]);
         printf("\n");
     }
-    for (y = 0; y < 4; y++) {
+    for (x = 0; x < 5; x++) {
         n = 0;
-        for (x = 0; x < 5; x++)
+        for (y = 0; y < 4; y++)
             n += a[x][y];
-        printf("The average of the %dth column is %.2f.\n", y + 1, n / 5);
+        printf("The average of line %dth is %.2f.\n", x + 1, n / 4);
     }
     return 0;
 }
