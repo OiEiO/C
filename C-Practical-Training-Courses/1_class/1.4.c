@@ -8,7 +8,6 @@ int main() {
         if (a[i] % 2 == 0)
             m = m + a[i];
         else
-
             n = n + 1;
     printf("奇数有%d个，偶数的累加和为%d", n, m);
     return 0;
