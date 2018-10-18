@@ -1,5 +1,5 @@
 #include <stdio.h>
-int judge();
+int judge(int);
 int main() {
     int n;
     printf("Please a enter year : ");
