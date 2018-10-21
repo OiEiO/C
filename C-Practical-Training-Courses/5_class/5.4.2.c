@@ -1,3 +1,6 @@
+/*求10!
+注意：用两个方法：不调用子函数法和调用子函数法。
+*/
 #include <stdio.h>
 int factorial(int);
 int n;

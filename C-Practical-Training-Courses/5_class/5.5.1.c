@@ -1,3 +1,6 @@
+/*求两个数的最小公倍数；
+注意：用两个方法：不调用子函数法和调用子函数法。
+*/
 #include <stdio.h>
 int main() {
     int i, n, m, mul;

@@ -1,15 +1,13 @@
 #include <stdio.h>
-float num();
-float i = 1, sum = 0;
+float num(float);
+float sum = 0;
 int main() {
-
-    sum = num();
+    sum = num(1);
     printf("sum = %f", sum);
     return 0;
 }
 
-float num() {
-    float i = 1;
+float num(float i) {
     for (i = 1; i <= 100; i++)
         sum += 1 / i;
     return sum;

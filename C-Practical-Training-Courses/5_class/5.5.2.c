@@ -1,3 +1,6 @@
+/*求两个数的最小公倍数；
+注意：用两个方法：不调用子函数法和调用子函数法。
+*/
 #include <stdio.h>
 int multiple(int, int); //子函数里有两个int，所以在括号里也要声明两个。
 int main() {
