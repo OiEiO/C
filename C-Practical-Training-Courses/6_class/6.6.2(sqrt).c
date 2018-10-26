@@ -1,23 +1,26 @@
 /*第六题：调用子函数判断一个数是否是素数；
 二、调用子函数*/
+#include <math.h>
 #include <stdio.h>
-int pre(int);
+int pri(int);
 int main() {
     int n;
-    printf("Please enter an integer: ");
+    printf("Please enter a integer: ");
     scanf("%d", &n);
 
-    if (pre(n) == 0)
+    if (2 > pri(n))
         printf("%d is a prime number.\n", n);
     else
         printf("%d is not a prime number.\n", n);
     return 0;
 }
-int pre(int x) {
-    int i, m = 0;
-    for (i = 2; i < x; i++)
+
+int pri(int x) {
+    int i, mul = 1;
+    for (i = 2; i <= sqrt(x); i++)
         if (x % i == 0) {
-            m++;
+            mul = i;
+            break;
         }
-    return m;
+    return mul;
 }
