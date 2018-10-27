@@ -8,7 +8,7 @@ int main() {
 
     while (i <= 100) {
         if (i % 2 == 0)
-            n -= 1 / (float)i;
+            n -= 1 / (float)i; // i 还为int类型，只是在这里转换为 float类型进行计算。
         else
             n += 1 / (float)i;
         i++;
