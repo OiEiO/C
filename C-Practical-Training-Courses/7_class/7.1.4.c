@@ -17,5 +17,5 @@ float whi(int i) {
         else
             n += 1 / (float)i;
     }
-    return n;
+    return n; //返回值为 float类型，所以声明函数的类型应该和返回值一致。
 }
