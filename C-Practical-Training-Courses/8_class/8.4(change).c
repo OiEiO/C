@@ -14,5 +14,6 @@ int main() {
         }
     }
     printf("\nThere are %d integers that satisfy the condition.\n", x);
+
     return 0;
 }
