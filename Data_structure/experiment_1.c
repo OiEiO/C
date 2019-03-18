@@ -41,7 +41,7 @@ void search(SqList *s, int n);
 //插入函数
 int Insert(SqList *s, int n);
 //删除函数
-void Delete(SqList *s, int n);
+int Delete(SqList *s, int n);
 //统计函数
 void Statistics(SqList *s, int n);
 //清空缓存区
@@ -75,10 +75,16 @@ int main() {
             search(&std, std.length);
             break;
         case 5:
-            Insert(&std, std.length);
+            if (Insert(&std, std.length)) {
+                printf("----插入成功----\n");
+                std.length += 1;
+            }
             break;
         case 6:
-            Delete(&std, std.length);
+            if (Delete(&std, std.length)) {
+                printf("----删除成功----\n");
+                std.length -= 1;
+            }
             break;
         case 7:
             Statistics(&std, std.length);
@@ -152,7 +158,7 @@ void search(SqList *s, int n) {
     if (i <= n) {
         printf("----学生信息如下----\n");
         printf("学号\t姓名\t成绩\n");
-        printf("%s\t%s\t%d\n", s->data[i - 1].no, s->data[i - 1].name, s->data[i - 1].score);
+        printf("%s\t%s\t%d\n", s->data[i - 1].no, s->data[i - 1].name, s->data[i - 1].score); //数组从 0 开始
     } else
         printf("----未找到该序号----\n");
 }
@@ -164,26 +170,50 @@ int Insert(SqList *s, int n) {
     printf("输入你想要插入的位置：");
     scanf("%d", &k);
 
-    if (k < 1 || k > s->length + 2) {
-        printf("---插入位置不合法---");
+    if (k < 1 || k > s->length + 1) {
+        printf("---插入位置不合法---\n");
         return (ERROR);
     }
     if (s->length >= MAXSIZE - 1) {
-        printf("----学生表已满----");
+        printf("----学生表已满----\n");
     }
-    for (k = s->length; k >= i - 1; k--) {
+    for (i = s->length; i >= k - 1; i--) {
         strcpy(s->data[i + 1].no, s->data[i].no);
         strcpy(s->data[i + 1].name, s->data[i].name);
         s->data[i + 1].score = s->data[i].score;
     }
-    return OK;
+    printf("输入新学生信息：\n");
+    printf("学号：");
+    scanf("%s", s->data[k - 1].no);
+    printf("姓名：");
+    scanf("%s", s->data[k - 1].name);
+    printf("成绩：");
+    scanf("%d", &s->data[k - 1].score);
+
+    return (OK);
 }
 
 //删除函数
-void Delete(SqList *s, int n) {}
+int Delete(SqList *s, int n) {
+    int i, k;
+
+    printf("输入你想要删除的位置：");
+    scanf("%d", &k);
+
+    if (k < 1 || k >= s->length + 1) {
+        printf("---删除位置不合法---\n");
+        return (ERROR);
+    }
+    for (i = k; i <= s->length; i++) {
+        strcpy(s->data[i - 1].no, s->data[i].no);
+        strcpy(s->data[i - 1].name, s->data[i].name);
+        s->data[i - 1].score = s->data[i].score;
+    }
+    return (OK);
+}
 
 //统计函数
-void Statistics(SqList *s, int n) {}
+void Statistics(SqList *s, int n) { printf("---当前共有%d名学生---\n", s->length); }
 
 //清空缓存区
 void empty() {
