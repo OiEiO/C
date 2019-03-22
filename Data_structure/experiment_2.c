@@ -276,13 +276,12 @@ void Sta(Snode *s) {
     Snode *p;
     p = s;
 
-    int j = 0;
+    int j = -1;
 
     while (p != NULL) {
         p = p->next;
         j++;
     }
-
     printf("---当前共有%d名学生---", j);
 }
 
