@@ -251,7 +251,6 @@ int Dle(Snode *s) {
     p = s;
 
     int i, j = 0;
-    // char n[35];
 
     printf("请输入想要删除的位置：");
     scanf("%d", &i);
