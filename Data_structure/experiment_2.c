@@ -275,9 +275,9 @@ void Sta(Snode *s) {
     Snode *p;
     p = s;
 
-    int j = -1;
+    int j = 0;
 
-    while (p != NULL) {
+    while (p->next != NULL) {
         p = p->next;
         j++;
     }
