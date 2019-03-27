@@ -182,7 +182,7 @@ void Locate(Snode *s) {
             printf("学号\t姓名\t成绩\n");
             printf("%s\t%s\t%d\n", p->data.no, p->data.name, p->data.score);
             printf("--------------------\n");
-            return; //？？？？？？？？？？？？？？？
+            return; //返回调用此函数的地方，此处返回到主函数
         }
     printf("\n----未找到此学生信息----");
 }

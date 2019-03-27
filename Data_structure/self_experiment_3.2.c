@@ -5,68 +5,44 @@
 #define FALSE 0
 #define TRUE 1
 
-//顺序栈
+//一号栈
 typedef struct {
     int data[Stack_Size];
-    int top;
-} SeqStack;
+    int top1;
+} Stack_1;
 
-//初始化
-void InitStack(SeqStack *s) { s->top = -1; }
+//二号栈
+typedef struct {
+    int data[Stack_Size];
+    int top2;
+} Stack_2;
 
+//初始化一号栈
+void InitStack_1(Stack_1 *q) { q->top1 = -1; }
+//初始化二号栈
+void InitStack_2(Stack_2 *r) { r->top2 = -1; }
 //进栈
-int Push();
-//出栈
-int Pop();
 
+//出栈
+
+//主函数
 int main() {
-    SeqStack str;
+    Stack_1 sta1;
+    Stack_2 sta2;
+
+    int num[Stack_Size];
     int i;
 
-    for (i = 0; str.data[i] != '\0'; i++) {
-        switch (str.data[i]) {
-        case 0:
-        case 1:
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-            Push(&str, str.data[i]);
-        }
-    }
-}
+    InitStack_1(&sta1);
+    InitStack_2(&sta2);
 
-//进栈
-int Push(SeqStack *s) {
-    int x;
-    if (s->top == Stack_Size - 1) {
-        printf("---栈已满---");
-        return FALSE;
-    }
-    printf("请输入进栈数字：");
-    scanf("%d", &x);
-    s->top++;
-    s->data[s->top] = x;
-    return TRUE;
-}
+    printf("请输入一个十进制整数：");
+    scanf("%d", &num[Stack_Size]);
 
-//出栈
-int Pop(SeqStack *s) {
-    /* int *x;
-    int n;
-    x=&n; */
-
-    if (s->top == -1) {
-        printf("---栈为空---");
-        return FALSE;
-    } else {
-        printf("%d", s->data[s->top]);
-        //*x=s->data[s->top];
-        s->top--;
-        return TRUE;
+    for (i = 0; num[i] != '\0'; i++) {
+        sta1.data[i] = num[i];
+        sta1.top1++;
     }
+
+    printf("%d", sta1.data[sta1.top1]);
 }
