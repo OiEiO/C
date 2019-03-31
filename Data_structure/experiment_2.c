@@ -281,7 +281,7 @@ void Sta(Snode *s) {
         p = p->next;
         j++;
     }
-    printf("---当前共有%d名学生---", j);
+    printf("\n---当前共有%d名学生---", j);
 }
 
 //清空缓存区

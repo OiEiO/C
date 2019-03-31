@@ -1,48 +1,55 @@
 /* 利用顺序栈实现回文数的判定。（输入一个十进制整数，若是回文数则显示“Y”,否则显示“N”） */
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define Stack_Size 20
-#define FALSE 0
-#define TRUE 1
 
 //一号栈
 typedef struct {
-    int data[Stack_Size];
+    char data[Stack_Size];
     int top1;
 } Stack_1;
 
 //二号栈
 typedef struct {
-    int data[Stack_Size];
+    char data[Stack_Size];
     int top2;
 } Stack_2;
 
-//初始化一号栈
-void InitStack_1(Stack_1 *q) { q->top1 = -1; }
-//初始化二号栈
-void InitStack_2(Stack_2 *r) { r->top2 = -1; }
-//进栈
-
-//出栈
-
-//主函数
-int main() {
+//比较
+void judge() {
     Stack_1 sta1;
     Stack_2 sta2;
 
-    int num[Stack_Size];
-    int i;
+    int len;
 
-    InitStack_1(&sta1);
-    InitStack_2(&sta2);
+    printf("请输入：");
+    gets(sta1.data);
+    len = strlen(sta1.data);
 
-    printf("请输入一个十进制整数：");
-    scanf("%d", &num[Stack_Size]);
-
-    for (i = 0; num[i] != '\0'; i++) {
-        sta1.data[i] = num[i];
-        sta1.top1++;
+    for (sta1.top1 = len - 1; sta1.top1 >= 0; sta1.top1--) {
+        sta2.data[sta2.top2] = sta1.data[sta1.top1];
     }
 
-    printf("%d", sta1.data[sta1.top1]);
+    for (sta2.top2 = 0; sta2.top2 < len; sta2.top2++) {
+        if (sta1.data[sta1.top1] != sta2.data[sta2.top2]) {
+            break;
+        }
+        sta1.top1--;
+    }
+
+    if (sta1.top1 == 0) {
+        printf("\n---输入数据是回文数---\n");
+    } else {
+        printf("\n---输入数据不是回文数---\n");
+    }
+}
+
+//主函数
+int main() {
+
+    judge();
+
+    return 0;
 }
