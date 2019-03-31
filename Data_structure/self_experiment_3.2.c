@@ -28,18 +28,14 @@ void judge() {
     gets(sta1.data);
     len = strlen(sta1.data);
 
+    sta2.top2 = 0;
+
     for (sta1.top1 = len - 1; sta1.top1 >= 0; sta1.top1--) {
         sta2.data[sta2.top2] = sta1.data[sta1.top1];
+        sta2.top2++;
     }
 
-    for (sta2.top2 = 0; sta2.top2 < len; sta2.top2++) {
-        if (sta1.data[sta1.top1] != sta2.data[sta2.top2]) {
-            break;
-        }
-        sta1.top1--;
-    }
-
-    if (sta1.top1 == 0) {
+    if (strcmp(sta1.data, sta2.data) == 0) {
         printf("\n---输入数据是回文数---\n");
     } else {
         printf("\n---输入数据不是回文数---\n");
