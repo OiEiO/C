@@ -25,7 +25,6 @@ void judge() {
 
     printf("请输入：");
     gets(sta1.data);
-    // fgets(sta1.data, 20, stdin);
     len = strlen(sta1.data);
 
     sta2.top2 = 0;
