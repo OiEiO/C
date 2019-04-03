@@ -1,6 +1,5 @@
 /* 利用顺序栈实现回文数的判定。（输入一个十进制整数，若是回文数则显示“Y”,否则显示“N”） */
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 #define Stack_Size 20
@@ -26,6 +25,7 @@ void judge() {
 
     printf("请输入：");
     gets(sta1.data);
+    // fgets(sta1.data, 20, stdin);
     len = strlen(sta1.data);
 
     sta2.top2 = 0;

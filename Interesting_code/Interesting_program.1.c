@@ -31,7 +31,7 @@ int main(void) {
         } else {
             printf("方程无解\n");
         }
-        fflush(stdin); //清空缓存区
+        // fflush(stdin); //清空缓存区
         printf("是否继续y/n? ");
         ch = getchar();             //输入字符来控制是否继续
         if (ch != 'Y' && ch != 'y') //输入非Y，结束程序
