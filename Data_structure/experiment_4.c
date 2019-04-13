@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 #define MAX 100
 #define FALSE 0
@@ -27,29 +26,72 @@ int EnterQueue(SeqQueue *q, int x) {
 }
 
 //出队
-int DeleteQueue(SeqQueue *q) {
-    int *x;
-    x = (int *)malloc(sizeof(int));
-
+int DeleteQueue(SeqQueue *q, int *x) {
     if (q->front == q->rear) {
         printf("---队列为空---");
         return FALSE;
     }
-
     *x = q->element[q->front];
     q->front = (q->front + 1) % MAX;
     return TRUE;
 }
 
+//取对头元素
+int GetHead(SeqQueue *q, int *x) {
+    if (q->front == q->rear)
+        return FALSE;
+    *x = q->element[q->front];
+    return TRUE;
+}
+
+//判断队列是否为空
+int IsEmpty(SeqQueue *q) {
+    if (q->front == q->rear)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 //打印杨辉三角
-void YangHuiTriangle() {
+void YangHuiTriangle(int N) {
     SeqQueue q;
 
     InitQueue(&q);
 
-    int n;
+    int n, i, x, k, temp;
 
-    EnterQueue(&q, 1);
+    EnterQueue(&q, 1); //第一行元素入队
+
+    for (n = 2; n <= N; n++) {
+        EnterQueue(&q, 1); //第n行第一个元素入队
+
+        for (i = N; i >= n; i--) //给数字间加空格，打印出金字塔形状
+            printf("   ");
+
+        for (i = 1; i <= n - 2; i++) { //利用队中第n-1行元素产生第n行的中间n-2个元素并入队
+            DeleteQueue(&q, &temp);    //出队元素赋给temp
+            printf("%6d", temp);       //打印第n-1行的元素
+            GetHead(&q, &x);
+            temp = temp + x;      //利用第n-1行元素产生第n行元素
+            EnterQueue(&q, temp); /////////////////////可以利用画图理解/////////////////////
+        }
+
+        DeleteQueue(&q, &x);
+        printf("%6d", x); //打印n-1行最后一个元素
+        EnterQueue(&q, 1);
+        printf("\n");
+    }
+    while (!IsEmpty(&q)) { //打印最后一行
+        DeleteQueue(&q, &x);
+        printf("%6d", x);
+    }
 }
 
-int main() { return 0; }
+int main() {
+    int N;
+    printf("请输入想打印的行数：");
+    scanf("%d", &N);
+    YangHuiTriangle(N);
+    printf("\n");
+    return 0;
+}
