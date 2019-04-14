@@ -6,20 +6,25 @@
 //比较
 void contrast() {
     int num[MAX], m1[MAX], m2[MAX];
-    int k1 = 0, k2 = 0;
-    int i, k = 0, n;
-    int a = 0, b = 0;
+    int n;
     char space;
+    int a = 0, b = 0;
+    int i;
+    int k1 = 0, k2 = 0;
 
     printf("请输入：");
-    while ((space = getchar()) != '\n') {
+    while (1) { //输入
         scanf("%d", &n);
+        space = getchar();
         num[a++] = n;
         b++;
+        if (space == '\n') {
+            break;
+        }
     }
 
-    for (i = 0; i < b; i++) {
-        if (num[i] <= 0) {
+    for (i = 0; i < b; i++) { //将正负分开
+        if (num[i] < 0) {
             m1[k1] = num[i];
             k1++;
         } else {
@@ -27,9 +32,14 @@ void contrast() {
             k2++;
         }
     }
-    while (k < k2) {
-        printf("%-4d", m2[k]);
-        k++;
+
+    for (i = 0; i < k1; i++) { //将负数接到正数后面
+        m2[k2] = m1[i];
+        k2++;
+    }
+
+    for (i = 0; i < k2; i++) { //输出
+        printf("%-4d", m2[i]);
     }
 }
 
