@@ -28,18 +28,18 @@ int Insert(SString1 *s, SString2 t, int pos) {
         return FALSE;
     }
 
-    if (s->len1 + t.len2 <= MAXLEN) {
+    if (s->len1 + t.len2 <= MAXLEN) { //插入后串长<=MAXLEN
         for (i = s->len1 + t.len2 - 1; i >= t.len2 + pos; i--)
             s->ch1[i] = s->ch1[i - t.len2];
         for (i = 0; i < t.len2; i++)
             s->ch1[i + pos] = t.ch2[i];
         s->len1 = s->len1 + t.len2;
-    } else if (pos + t.len2 <= MAXLEN) {
+    } else if (pos + t.len2 <= MAXLEN) { //插入后串长>MAXLEN，但串t的字符序列可以全部插入
         for (i = MAXLEN - 1; i > t.len2 + pos - 1; i--)
             s->ch1[i] = s->ch1[i - t.len2];
         for (i = 0; i < t.len2; i++)
             s->len1 = MAXLEN;
-    } else {
+    } else { //插入后串长>MAXLEN，并且串t的部分字符也要舍弃
         for (i = 0; i < MAXLEN - pos; i++)
             s->ch1[i + pos] = t.ch2[i];
         s->len1 = MAXLEN;

@@ -1,3 +1,4 @@
+/* 利用循环队列打印杨辉三角前N行的值（N <= 7）, 并以金字塔的形式输出相应的值。 */
 #include <stdio.h>
 
 #define MAX 100
@@ -58,7 +59,7 @@ void YangHuiTriangle(int N) {
 
     InitQueue(&q);
 
-    int n, i, x, k, temp;
+    int n, i, x, temp;
 
     EnterQueue(&q, 1); //第一行元素入队
 
@@ -66,7 +67,7 @@ void YangHuiTriangle(int N) {
         EnterQueue(&q, 1); //第n行第一个元素入队
 
         for (i = N; i >= n; i--) //给数字间加空格，打印出金字塔形状
-            printf("   ");
+            printf("   ");       // N为打印的行数，n为每行的元素个数
 
         for (i = 1; i <= n - 2; i++) { //利用队中第n-1行元素产生第n行的中间n-2个元素并入队
             DeleteQueue(&q, &temp);    //出队元素赋给temp
