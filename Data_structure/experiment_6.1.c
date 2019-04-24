@@ -2,97 +2,115 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define QUEUE_SIZE 50
-#define FALSE 0
-#define TRUE 1
-
-//定义二叉树（链式）
-typedef struct Node {
+typedef struct NNode {
     char data;
-    struct Node *Lchild;
-    struct Node *Rchild;
-} Bitree;
+    struct NNode *LChild;
+    struct NNode *RChild;
+} BiNode, *BiTree; //定义二叉树结点和结点指针
 
-//定义队列
+typedef BiTree QueueElementType;
+
+typedef struct Node {
+    QueueElementType data;
+    struct Node *next;
+} LinkQueueNode; //定义队列结点
+
 typedef struct {
-    char element[QUEUE_SIZE];
-    int front;
-    int rear;
-} SeqQueue;
+    LinkQueueNode *front; //队列头结点指针
+    LinkQueueNode *rear;  //队列尾结点指针
+} LinkQueue;              //定义队列
 
-//初始化
-void InitBitree() {}
-
-void InitQueue(SeqQueue *q) { q->front = q->rear = 0; }
-
-//入队
-int EnterQueue(SeqQueue *q, int x) {
-    if ((q->rear + 1) % QUEUE_SIZE == q->front) {
-        printf("---队列已满---");
-        return FALSE;
-    }
-    q->element[q->rear] = x;
-    q->rear = (q->rear + 1) % QUEUE_SIZE;
-    return TRUE;
+int InitQueue(LinkQueue *Q) //初始化队列
+{
+    Q->front = (LinkQueueNode *)malloc(sizeof(LinkQueueNode));
+    if (Q->front != NULL) {
+        Q->rear = Q->front;
+        Q->front->next = NULL;
+        return 1;
+    } else
+        return 0; //溢出
 }
 
-//出队
-int DeleteQueue(SeqQueue *q, int *x) {
-    if (q->front == q->rear) {
-        printf("---队列为空---");
-        return FALSE;
-    }
-    *x = q->element[q->front];
-    q->front = (q->front + 1) % QUEUE_SIZE;
-    return TRUE;
+int EnterQueue(LinkQueue *Q, QueueElementType x) //元素x入链队列 尾插法
+{
+    LinkQueueNode *newnode;
+    newnode = (LinkQueueNode *)malloc(sizeof(LinkQueueNode));
+    if (newnode != NULL) {
+        newnode->data = x;
+        newnode->next = NULL;
+        Q->rear->next = newnode;
+        Q->rear = newnode;
+        return 1;
+    } else
+        return 0;
 }
 
-//取对头元素
-int GetHead(SeqQueue *q, int *x) {
-    if (q->front == q->rear)
-        return FALSE;
-    *x = q->element[q->front];
-    return TRUE;
+int DeleteQueue(LinkQueue *Q, QueueElementType *x) //链队列出队 从开始的头开始取
+{
+    LinkQueueNode *p;
+    if (Q->front == Q->rear)
+        return 0;
+    p = Q->front->next;
+    Q->front->next = p->next;
+    if (Q->rear == p)
+        Q->rear = Q->front; //如果去掉结点p后，队列为空 不要忘记将队列置空
+    *x = p->data;
+    free(p);
+    return 1;
 }
 
-//判断队列是否为空
-int IsEmpty(SeqQueue *q) {
-    if (q->front == q->rear)
-        return TRUE;
+int IsEmpty(LinkQueue *Q) //队列为空返回1  不为空返回0
+{
+    if (Q->front == Q->rear)
+        return 1;
     else
-        return FALSE;
+        return 0;
 }
 
-//创建二叉树
-void CreateBitree(Bitree *t) {
-    char c;
-    printf("请以前序输入二叉树的内容：");
-    scanf("%c", &c);
-
-    if ('#' == c) {
-        t = NULL;
-    } else {
-        t = (Bitree *)malloc(sizeof(Bitree));
-        t->data = c;
-        CreateBitree(&*t->Lchild);
-        CreateBitree(&*t->Rchild);
+void CreateBiTree(BiTree *bt) //用先序遍历创建二叉树
+{
+    char ch;
+    ch = getchar();
+    if (ch == '.')
+        (*bt) = NULL;
+    else {
+        *bt = (BiTree)malloc(sizeof(BiNode));
+        (*bt)->data = ch;
+        CreateBiTree(&((*bt)->LChild));
+        CreateBiTree(&((*bt)->RChild));
     }
 }
 
-//层次遍历
-int LeveLorder(Bitree *t) {
-    SeqQueue q;
-    Bitree p;
-
-    InitQueue(&q);
+int LayerOrder(BiTree bt) //层次遍历二叉树 成功遍历返回1 失败返回0
+{
+    LinkQueue Q;
+    BiTree p;
+    InitQueue(&Q);
+    if (bt == NULL)
+        return 0;
+    EnterQueue(&Q, bt);
+    while (!IsEmpty(&Q)) {
+        if (DeleteQueue(&Q, &p))
+            ;
+        printf("%c ", p->data);
+        if (p->LChild)
+            EnterQueue(&Q, p->LChild);
+        if (p->RChild)
+            EnterQueue(&Q, p->RChild);
+    }
+    return 1;
 }
 
-//主函数
 int main() {
-    Bitree *t;
+    BiTree bt;
+    printf("用先序遍历创建二叉树：");
+    CreateBiTree(&bt);
 
-    printf("请按前序输入二叉树内容：");
-    CreateBitree(t);
+    printf("层次遍历为：");
+    if (LayerOrder(bt))
+        printf("\n层次遍历成功\n");
+    else
+        printf("\n层次遍历失败\n");
 
     return 0;
 }
