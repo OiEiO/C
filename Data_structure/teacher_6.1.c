@@ -1,3 +1,4 @@
+/* 1、创建一棵二叉树（二叉链式），利用队列输出二叉树的层次遍历序列。 */
 #include <malloc.h>
 #include <stdio.h>
 
@@ -111,7 +112,6 @@ int main() {
 
     printf("层次遍历输出结点为:");
     LayerOrder(T);
-    getch();
 
     return 0;
 }

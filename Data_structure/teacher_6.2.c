@@ -1,3 +1,4 @@
+/* 2、创建一棵二叉树（二叉链式），计算非终端结点的个数并给出先序，中序和后序遍历序列。 */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -108,8 +109,6 @@ int main() {
     num = count_tree(T) - leaf(T);
     printf("二叉树中非终端结点个数为:%d", num);
     printf("\n");
-
-    getch();
 
     return 0;
 }

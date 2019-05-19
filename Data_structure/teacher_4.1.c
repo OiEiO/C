@@ -1,8 +1,9 @@
+/* 利用循环队列打印杨辉三角前N行的值（N <= 7）, 并以金字塔的形式输出相应的值。 */
 #include <stdio.h>
 
 #define MAXQSIZE 100
-
 #define N 7
+
 typedef struct SqQueue {
     int data[MAXQSIZE];
     int front, rear;

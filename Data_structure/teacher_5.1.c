@@ -1,3 +1,4 @@
+/* 1、设任意n个整数存放于数组A(1:n)中，试编写算法，将所有正数排在所有负数前面。 */
 #include <stdio.h>
 #include <string.h>
 
