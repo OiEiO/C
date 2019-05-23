@@ -13,24 +13,22 @@
  */
 #include <math.h>
 #include <stdio.h>
-#define NO 100
+#define NO 105
 int main() {
-    int x[NO], y[NO], r[NO];
+    int r[NO];
+    double x[NO], y[NO];
     double min = 0.0;
     double mi = 0.0;
-    int n, i, m = 0;
+    int n, i;
     scanf("%d", &n);
     for (i = 0; i < n; i++) {
-        scanf("%d %d %d", &x[m], &y[m], &r[m]);
-        m++;
+        scanf("%lf %lf %d", &x[i], &y[i], &r[i]);
     }
     for (i = 0; i < n; i++) {
-        for (i = 0; i < m; i++) {
-            min = x[i] * x[i] + y[i] * y[i];
-            min = sqrt(min) / 50;
-            min = min * 2;
-            min = min + r[i] + (r[i] / 2.0);
-        }
+        min = x[i] * x[i] + y[i] * y[i];
+        min = sqrt(min) / 50;
+        min = min * 2;
+        min = min + r[i] + (r[i] / 2.0);
         mi += min;
     }
     printf("%.lf", ceil(mi));

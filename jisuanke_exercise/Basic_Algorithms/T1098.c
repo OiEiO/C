@@ -1,5 +1,14 @@
-/* 求两个不超过 200200 位的非负整数的和。 */
+/* 求两个不超过 200 位的非负整数的和。 */
 #include <stdio.h>
-#define NUM 200
+#define NUM 205
 
-int main() {}
+int main() {
+    char x[NUM], y[NUM];
+    int i;
+    char ch;
+
+    gets(x);
+    gets(y);
+
+    return 0;
+}
