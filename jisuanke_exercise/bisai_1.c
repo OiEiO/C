@@ -1,4 +1,4 @@
-#include <stdio.h>
+/* #include <stdio.h>
 
 int main() {
     int arr[6], i, j, t;
@@ -19,4 +19,10 @@ int main() {
     }
 
     return 0;
+} */
+#include <stdio.h>
+int main() {
+    int x;
+    scanf("%d", &x);
+    printf("%d", x % 5);
 }
