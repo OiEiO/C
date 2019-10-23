@@ -24,5 +24,6 @@ int main() {
 int main() {
     int x;
     scanf("%d", &x);
-    printf("%d", x % 5);
+    x <<= 1;
+    printf("%d", x);
 }
