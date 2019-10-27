@@ -1,12 +1,8 @@
 #include <stdio.h>
 int main() {
-    int a, b, c;
-    long double z = 2;
+    int a = 3, b = 7;
 
-    for (a = 0; a < 94; a++)
-        z *= z;
-
-    printf("%Lf", z);
+    printf("%d", a % b);
 
     return 0;
 }
