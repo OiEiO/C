@@ -1,8 +1,7 @@
 #include <stdio.h>
 int main() {
-    int a = 3, b = 7;
-
-    printf("%d", a % b);
+    int n = 1;
+    int x = 1;
 
     return 0;
 }
