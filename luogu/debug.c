@@ -1,11 +1,11 @@
 #include <stdio.h>
+#include <string.h>
 int main() {
-    int a[3] = {0};
+    char a[6];
 
-    a[0] = 4;
-    a[0]++;
+    a[0] = 'A';
 
-    printf("%d", a[0]);
+    printf("%d", (int)strlen(a));
 
     return 0;
 }
