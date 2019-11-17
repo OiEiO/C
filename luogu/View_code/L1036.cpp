@@ -1,3 +1,14 @@
+//选数
+/*
+3+7+12=22
+3+7+19=29
+7+12+19=38
+3+12+19=34
+
+现在，要求你计算出和为素数共有多少种。
+例如上例，只有一种的和为素数：3+7+19=29
+*/
+
 #include <iostream>
 using namespace std;
 bool isprime(int a) //判断素数
@@ -24,11 +35,8 @@ void dfs(int m, int sum, int startx) //最重要的递归
 {
     if (m == k) //如果选完了的话
     {
-        if (isprime(sum)) {
-            printf("%d ", sum);
-            ans++;
-        }
-
+        if (isprime(sum)) //如果和是素数
+            ans++;        // ans加一
         return;
     }
     for (int i = startx; i < n; i++) {
