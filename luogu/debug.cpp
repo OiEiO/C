@@ -1,54 +1,32 @@
 #include <iostream>
 using namespace std;
-bool isprime(int a) //判断素数
-{
-    /*0和1特判真的没啥用对这题
-    吐槽：题中n的数据范围很奇怪，
-    n还有可能=1.....那k<n......
-    */
-    for (int i = 2; i * i <= a; i++) //不想用sqrt，还要头文件
-        if (a % i == 0)              //如果整除
-            return false;            //扔回false
-    //程序都到这里的话就说明此为素数
-    //否则就被扔回了
-    return true; //扔回true
-}
-int n, k;
-int a[25];
-bool vis[25];
-long long ans = 0;
-void dfs(int m, int sum, int startx) //最重要的递归
-// m代表现在select了多少个数
-// sum表示当前的和
-// startx表示升序排列，以免算重
-{
-    if (m == k) //如果选完了的话
-    {
-        if (isprime(sum)) {
-            printf("%d ", sum);
-            ans++;
+
+int n, kind = 0, m1[10000][10], m2[10];
+
+void peiliao(int total, int a) {
+    if (a == 10) {
+        if (total == n) {
+            for (int j = 0; j < 10; j++)
+                m1[kind][j] = m2[j]; //符合要求存起来~~
+            kind++;
         }
-
-        return;
-    }
-    for (int i = startx; i < n; i++) {
-        if (vis[i])                    //如果被选过
-            continue;                  //直接进入下一次循环
-        vis[i] = true;                 //标记为选过
-        dfs(m + 1, sum + a[i], i + 1); //递归
-        //步数要加一，和也要加
-        //升序起始值要变成i+1,以免算重
-        vis[i] = false;
-    }
-    return; //这一个步骤下，所有的都枚举完了
-    //直接返回去
+    } else if (total >= n)
+        ; //小小优化一下
+    else
+        for (int i = 1; i <= 3; i++) {
+            m2[a] = i;
+            peiliao(total + i, a + 1); //其实这和十连for没什么区别。。。
+        }
 }
-int main() {
-    cin >> n >> k; //输入
 
-    for (int i = 0; i < n; i++)
-        cin >> a[i]; //循环读入
-    dfs(0, 0, 0);    //调用函数
-    cout << ans;     //输出答案
-    return 0;        //结束程序
+int main() {
+    cin >> n;
+    peiliao(0, 0);
+    cout << kind << endl;
+    for (int j = 0; j < kind; j++) {
+        for (int i = 0; i < 10; i++)
+            cout << m1[j][i] << " "; //大家一定要记得打空格...
+        cout << endl;
+    }
+    return 0;
 }
