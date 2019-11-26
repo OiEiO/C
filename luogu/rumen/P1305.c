@@ -1,5 +1,7 @@
+//遍历二叉树、递归
 #include <stdio.h>
 int main() {
-    printf("%d", 10 % 1);
+    int i;
+
     return 0;
 }
