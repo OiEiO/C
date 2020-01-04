@@ -1,5 +1,6 @@
 #include <stdio.h>
-int main() {
-    printf("%d", 10 % 1);
-    return 0;
+
+void a(char *s) {
+    char b[20] = {"sdalvsdalvsdalvsdalv"};
+    a(&b[5]);
 }
