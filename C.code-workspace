@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.defaultLanguage": "c",
+		"clang.cflags": [
+			"--target=x86_64-w64-mingw",
+			"-std=c11",
+			"-Wall"
+		],
+		"clang.cxxflags": [
+			"--target=x86_64-w64-mingw",
+			"-std=c++17",
+			"-Wall"
+		],
+		"clang.completion.enable": true,
+		"files.associations": {
+			"stdio.h": "c",
+			"limits": "c",
+			"math.h": "c",
+			"type_traits": "c",
+			"cmath": "c",
+			"cstdio": "cpp"
+		}
+	}
+}
