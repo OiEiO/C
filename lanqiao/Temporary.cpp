@@ -1,24 +1,31 @@
 #include <iostream>
-#include <map>
-#include <string>
+#include <cmath>
+
 using namespace std;
+
 int main() {
-    map<string, int> m;         // 定义⼀个空的map m，键是string类型的，值是int类型的
-    m["hello"] = 2;             // 将key为"hello", value为2的键值对(key-value)存⼊map中
-    cout << m["hello"] << endl; // 访问map中key为"hello"的value, 如果key不存在，则返回0
-    cout << m["world"] << endl;
-    m["world"] = 3; // 将"world"键对应的值修改为3
-    m[","] = 1;     // 设⽴⼀组键值对，键为"," 值为1
-    // ⽤迭代器遍历，输出map中所有的元素，键⽤it->first获取，值⽤it->second获取
-    for (auto it = m.begin(); it != m.end(); it++) {
-        cout << it->first << " " << it->second << endl;
+    int n, m = 0, s = -1, sum = 0;
+    int a[3][100005];
+
+    scanf("%d", &n);
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &a[i][j]);
+        }
     }
 
-    // 访问map的第⼀个元素，输出它的键和值
-    cout << m.begin()->first << " " << m.begin()->second << endl;
-    // 访问map的最后⼀个元素，输出它的键和值
-    cout << m.rbegin()->first << " " << m.rbegin()->second << endl;
-    // 输出map的元素个数
-    cout << m.size() << endl;
+    for (int j = 0; j < n - 1; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int k = 0; k < 3; k++) {
+                m = a[i][j] - a[k][j + 1];
+                if (s > abs(m) || s == -1) {
+                    s = abs(m);
+                }
+            }
+        }
+        sum += s;
+    }
+    printf("%d", sum);
+
     return 0;
 }

@@ -23,7 +23,8 @@
 			"math.h": "c",
 			"type_traits": "c",
 			"cmath": "c",
-			"cstdio": "cpp"
+			"cstdio": "cpp",
+			"iostream": "cpp"
 		}
 	}
 }
